@@ -39,7 +39,7 @@ const App: React.FC = () => {
               const map = new Map<string, VoxelData>();
               parsed.forEach(v => map.set(v.id, v));
               setVoxels(map);
-              console.log("Loaded world from the local storage");
+              console.log("Loaded world from the locals storage");
               return;
           } catch(e) {
               console.error("Fail to parsed local storage", e);
