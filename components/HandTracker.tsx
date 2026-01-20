@@ -89,6 +89,11 @@ function sampleColorAt(ctx: CanvasRenderingContext2D, x: number, y: number, widt
     avgG /= colorHistory.length;
     avgB /= colorHistory.length;
 
+    // Reject near-white / near-black samples (likely noise or empty background)
+    if ((avgR > 245 && avgG > 245 && avgB > 245) || (avgR < 10 && avgG < 10 && avgB < 10)) {
+      return undefined;
+    }
+
     return rgbToHex(avgR, avgG, avgB);
 }
 
@@ -99,6 +104,7 @@ export const HandTracker: React.FC<HandTrackerProps> = ({ onUpdate, handPosRef, 
   const [isActive, setIsActive] = useState(true);
   const [permissionError, setPermissionError] = useState(false);
   const [isModelLoading, setIsModelLoading] = useState(false);
+  const [modelLoadError, setModelLoadError] = useState(false);
   
   const handLandmarkerRef = useRef<any>(null);
   const animationFrameRef = useRef<number>(0);
@@ -113,30 +119,38 @@ export const HandTracker: React.FC<HandTrackerProps> = ({ onUpdate, handPosRef, 
     settingsRef.current = gestureSettings;
   }, [gestureSettings]);
 
-  useEffect(() => {
-    const loadModel = async () => {
-      setIsModelLoading(true);
-      try {
-        const vision = await FilesetResolver.forVisionTasks(
-          "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.8/wasm"
-        );
-        handLandmarkerRef.current = await HandLandmarker.createFromOptions(vision, {
-          baseOptions: {
-            modelAssetPath: `https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task`,
-            delegate: "GPU"
-          },
-          runningMode: "VIDEO",
-          numHands: 1,
-          minHandDetectionConfidence: 0.5,
-          minHandPresenceConfidence: 0.5,
-          minTrackingConfidence: 0.5
-        });
-      } catch (err) {
-        console.error("Failed to load MediaPipe model:", err);
-      } finally {
-        setIsModelLoading(false);
+  // Load model function lifted so it can be retried from UI
+  const loadModel = async () => {
+    setIsModelLoading(true);
+    setModelLoadError(false);
+    try {
+      const vision = await FilesetResolver.forVisionTasks(
+        "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.8/wasm"
+      );
+      if (handLandmarkerRef.current) {
+        try { handLandmarkerRef.current.close(); } catch {}
+        handLandmarkerRef.current = null;
       }
-    };
+      handLandmarkerRef.current = await HandLandmarker.createFromOptions(vision, {
+        baseOptions: {
+          modelAssetPath: `https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task`,
+          delegate: "GPU"
+        },
+        runningMode: "VIDEO",
+        numHands: 1,
+        minHandDetectionConfidence: 0.5,
+        minHandPresenceConfidence: 0.5,
+        minTrackingConfidence: 0.5
+      });
+    } catch (err) {
+      console.error("Failed to load MediaPipe model:", err);
+      setModelLoadError(true);
+    } finally {
+      setIsModelLoading(false);
+    }
+  };
+
+  useEffect(() => {
     loadModel();
     return () => { if (handLandmarkerRef.current) handLandmarkerRef.current.close(); };
   }, []);
@@ -236,7 +250,7 @@ export const HandTracker: React.FC<HandTrackerProps> = ({ onUpdate, handPosRef, 
                 // Adjustable radius based on mode
                 const scanRadius = isGrabbing ? 30 : 8; 
                 
-                sampledColor = sampleColorAt(ctx, hudScanX, hudScanY, canvas.width, canvas.height, scanRadius);
+              sampledColor = sampleColorAt(ctx, hudScanX, hudScanY, canvas.width, canvas.height, scanRadius);
                 ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear video frame after sampling
             }
 
@@ -278,6 +292,18 @@ export const HandTracker: React.FC<HandTrackerProps> = ({ onUpdate, handPosRef, 
          <canvas ref={canvasRef} className="absolute inset-0 h-full w-full object-cover transform -scale-x-100 pointer-events-none" />
          <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(6,182,212,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(6,182,212,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
       </div>
+
+      { (permissionError || modelLoadError) && (
+        <div className="absolute bottom-24 left-6 z-50">
+          <div className="flex items-center gap-3 bg-red-900/80 text-white px-4 py-2 rounded-md">
+            <div className="text-sm">
+              {permissionError ? 'Camera permission denied.' : 'Model failed to load.'}
+            </div>
+            {permissionError && <button onClick={() => { setPermissionError(false); setIsActive(true); }} className="ml-2 px-3 py-1 bg-white/10 rounded">Retry Camera</button>}
+            {modelLoadError && <button onClick={() => { loadModel(); }} className="ml-2 px-3 py-1 bg-white/10 rounded">Reload Model</button>}
+          </div>
+        </div>
+      )}
 
       <div className="absolute bottom-6 left-6 z-50">
         <div className="flex items-center gap-4 bg-black/80 backdrop-blur-xl border border-white/10 px-5 py-3 rounded-full shadow-2xl">

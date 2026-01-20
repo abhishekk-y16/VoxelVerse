@@ -28,7 +28,8 @@ export const GRID_SIZE = 30; // Larger grid for drawing text
 // Default Settings
 export const DEFAULT_GESTURE_SETTINGS: GestureSettings = {
   pinchThreshold: 0.035, // Tight pinch
-  grabThreshold: 0.15    // Tight fist
+  grabThreshold: 0.15,   // Tight fist
+  minConfidence: 0.6
 };
 
 export const GESTURE_CONFIDENCE_MIN = 0.6;

@@ -5,7 +5,7 @@ import { UIOverlay } from './components/UIOverlay';
 import { HandTracker } from './components/HandTracker';
 import { apiService } from './services/apiService';
 import { AppState, EditorMode, GestureType, VoxelMap, VoxelData, TrackingState, HistoryAction, GestureSettings } from './types';
-import { COLORS, DEBOUNCE_MS, DEFAULT_GESTURE_SETTINGS } from './constants';
+import { COLORS, DEBOUNCE_MS, DEFAULT_GESTURE_SETTINGS, GESTURE_CONFIDENCE_MIN } from './constants';
 
 const App: React.FC = () => {
   // State
@@ -42,7 +42,7 @@ const App: React.FC = () => {
               console.log("Loaded world from local storage");
               return;
           } catch(e) {
-              console.error("Failed to parse local storage", e);
+              console.error("Failed to parsed local storage", e);
           }
       }
 
@@ -157,33 +157,35 @@ const App: React.FC = () => {
     setCurrentGesture(state.gesture);
 
     if (state.isTracking) {
-        const { x, y, z } = gridPosRef.current;
+      const { x, y, z } = gridPosRef.current;
 
-        // --- INTELLIGENT COLOR SAMPLING ---
-        // Enhanced logic: Auto-detect color when grabbing an object in Build Mode
-        // We filter out pure white/black as they usually indicate sampling errors or empty space
-        if (state.sampledColor && state.sampledColor !== '#ffffff' && state.sampledColor !== '#000000') {
-             const shouldUpdateColor = mode === EditorMode.COLOR || (mode === EditorMode.BUILD && state.gesture === GestureType.GRAB);
+      // --- INTELLIGENT COLOR SAMPLING ---
+      // Enhanced logic: Auto-detect color when grabbing an object in Build Mode
+      // We filter out pure white/black as they usually indicate sampling errors or empty space
+      if (state.sampledColor && state.sampledColor !== '#ffffff' && state.sampledColor !== '#000000') {
+         const shouldUpdateColor = mode === EditorMode.COLOR || (mode === EditorMode.BUILD && state.gesture === GestureType.GRAB);
              
-             if (shouldUpdateColor) {
-                 setSelectedColor(state.sampledColor);
-             }
-        }
+         if (shouldUpdateColor) {
+           setSelectedColor(state.sampledColor);
+         }
+      }
 
-        // --- ACTION LOGIC ---
-        if (state.gesture === GestureType.PINCH) {
-            // Pinch is primarily for placing
-            if (mode === EditorMode.BUILD || mode === EditorMode.COLOR) {
-               handlePlaceVoxel(x, y, z, true);
-            }
-        } 
-        else if (state.gesture === GestureType.GRAB) {
-            // IMPORTANT: GRAB is for DELETE only in DELETE mode.
-            // In Build Mode, GRAB means "Hold Object to Scan Color" (handled above).
-            if (mode === EditorMode.DELETE) {
-               handleDeleteVoxel(x, y, z, true);
-            }
+      // --- ACTION LOGIC (gate by confidence) ---
+      const minConf = gestureSettings.minConfidence ?? GESTURE_CONFIDENCE_MIN;
+
+      if (state.gesture === GestureType.PINCH && state.confidence >= minConf) {
+        // Pinch is primarily for placing
+        if (mode === EditorMode.BUILD || mode === EditorMode.COLOR) {
+           handlePlaceVoxel(x, y, z, true);
         }
+      } 
+      else if (state.gesture === GestureType.GRAB && state.confidence >= minConf) {
+        // IMPORTANT: GRAB is for DELETE only in DELETE mode.
+        // In Build Mode, GRAB means "Hold Object to Scan Color" (handled above).
+        if (mode === EditorMode.DELETE) {
+           handleDeleteVoxel(x, y, z, true);
+        }
+      }
     }
   }, [handlePlaceVoxel, handleDeleteVoxel, mode]);
 

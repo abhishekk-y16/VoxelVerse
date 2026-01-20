@@ -38,6 +38,7 @@ export interface HandLandmark {
 export interface GestureSettings {
   pinchThreshold: number; // Max distance between thumb and index
   grabThreshold: number;  // Max extension of fingers for fist
+  minConfidence?: number; // Minimum confidence required to trigger actions
 }
 
 export interface TrackingState {
