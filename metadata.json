@@ -1,0 +1,8 @@
+{
+  "name": "VoxelVerse: Gesture Editor",
+  "description": "A high-performance 3D voxel editor with gesture control capabilities, built for React and Spring Boot.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
