@@ -4,7 +4,7 @@ import App from './App';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
-  throw new Error("Could Not find Root element to mount to");
+  throw new Error("Could Not find Root Element to mount to");
 }
 
 const root = ReactDOM.createRoot(rootElement);
