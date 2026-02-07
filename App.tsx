@@ -189,7 +189,7 @@ const App: React.FC = () => {
     }
   }, [handlePlaceVoxel, handleDeleteVoxel, mode]);
 
-  // We pass true to isColorPickingMode if in COLOR mode OR if in BUILD mode (to allow background sampling)
+  // We pass  true to isColorPickingMode if in COLOR mode OR if in BUILD mode (to allow background sampling)
   const isSamplingActive = mode === EditorMode.COLOR || mode === EditorMode.BUILD;
 
   return (
