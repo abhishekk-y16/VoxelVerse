@@ -180,7 +180,7 @@ const App: React.FC = () => {
         }
       } 
       else if (state.gesture === GestureType.GRAB && state.confidence >= minConf) {
-        // IMPORTANT: GRAB is for DELETE only in DELETE mode.
+        // IMPORTANT: GRAB is for DELETE only in DELETE  mode.
         // In Build Mode, GRAB means "Hold Object to Scan Color" (handled above).
         if (mode === EditorMode.DELETE) {
            handleDeleteVoxel(x, y, z, true);
