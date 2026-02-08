@@ -20,7 +20,7 @@ const App: React.FC = () => {
   const [history, setHistory] = useState<HistoryAction[]>([]);
   const [future, setFuture] = useState<HistoryAction[]>([]);
 
-  // High-Performance Transient State (No Re-renders for position)
+  // High-Performance Transient  State (No Re-renders for position)
   const handPosRef = useRef<{ x: number, y: number }>({ x: 0.5, y: 0.5 });
   const gridPosRef = useRef<{ x: number, y: number, z: number }>({ x: 0, y: 0, z: 0 });
   const voxelsRef = useRef<VoxelMap>(new Map());
