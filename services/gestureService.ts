@@ -44,7 +44,7 @@ export const detectGesture = (
   const pinchDist = getDistance(thumbTip, indexTip);
   const isPinch = pinchDist < pinchThreshold;
   
-  // 2. GRAB (Fist): All fingers close to wrist
+  // 2. GRAB (Fist): All fingers close to wrist 
   if (indexExt < grabThreshold && middleExt < grabThreshold && ringExt < grabThreshold && pinkyExt < grabThreshold) {
      return { type: GestureType.GRAB, confidence: 0.9 };
   }
