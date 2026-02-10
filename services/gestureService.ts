@@ -2,7 +2,7 @@
 import { HandLandmark, GestureType, GestureSettings } from '../types';
 import { DEFAULT_GESTURE_SETTINGS } from '../constants';
 
-// Helper to calculate Euclidean distance between two 3D points
+// Helper to calculate Euclidean distance between two 3D points 
 const getDistance = (p1: HandLandmark, p2: HandLandmark): number => {
   return Math.sqrt(
     Math.pow(p1.x - p2.x, 2) +
