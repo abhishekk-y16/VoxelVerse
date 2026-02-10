@@ -74,7 +74,7 @@ export const detectGesture = (
       return { type: GestureType.THUMBS_UP, confidence: 0.8 };
   }
 
-  // 6. OPEN HAND: All extended
+  // 6. OPEN HAND: All extended 
   if (isIndexExtended && isMiddleExtended && ringExt > 0.2 && pinkyExt > 0.2) {
     return { type: GestureType.OPEN_HAND, confidence: 0.95 };
   }
