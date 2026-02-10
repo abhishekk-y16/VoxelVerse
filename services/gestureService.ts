@@ -49,7 +49,7 @@ export const detectGesture = (
      return { type: GestureType.GRAB, confidence: 0.9 };
   }
 
-  // Check Pinch AFTER Grab  to avoid false positives when making a fist
+  // Check Pinch AFTER Grab  to avoid false positives when  making a fist
   if (isPinch) {
       return { type: GestureType.PINCH, confidence: 0.95 };
   }
