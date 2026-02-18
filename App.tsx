@@ -26,7 +26,7 @@ const App: React.FC = () => {
   const voxelsRef = useRef<VoxelMap>(new Map());
   
   // Cooldown Ref for Action Limiting
-  const lastActionTimeRef = useRef<number>(0);
+  const lastActionTimeRef = useRef<number>(0); 
 
   // Initialize & Persistence
   useEffect(() => {
