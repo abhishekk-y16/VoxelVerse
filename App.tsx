@@ -42,7 +42,7 @@ const App: React.FC = () => {
               console.log("Loaded World from the Local of Storage");
               return;
           } catch(e) {
-              console.error("Fail to Parse local Storage", e);
+              console.error("Fail to Parse local  Storage", e);
           }
       }
 
