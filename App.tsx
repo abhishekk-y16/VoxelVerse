@@ -30,7 +30,7 @@ const App: React.FC = () => {
 
   // Initialize & Persistence
   useEffect(() => {
-    const loadWorld = async () => {
+    const loadWorld = async () => { 
       // 1. Try LocalStorage first
       const saved = localStorage.getItem('voxelverse_data');
       if (saved) {
