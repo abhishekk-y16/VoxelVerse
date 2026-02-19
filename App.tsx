@@ -7,7 +7,7 @@ import { apiService } from './services/apiService';
 import { AppState, EditorMode, GestureType, VoxelMap, VoxelData, TrackingState, HistoryAction, GestureSettings } from './types';
 import { COLORS, DEBOUNCE_MS, DEFAULT_GESTURE_SETTINGS, GESTURE_CONFIDENCE_MIN } from './constants';
 
-const App: React.FC = () => {
+const App: React.FC = () => { 
   // State
   const [voxels, setVoxels] = useState<VoxelMap>(new Map());
   const [mode, setMode] = useState<EditorMode>(EditorMode.BUILD);
