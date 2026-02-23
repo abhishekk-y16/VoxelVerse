@@ -181,7 +181,7 @@ export const UIOverlay: React.FC<UIOverlayProps> = ({
                 </button>
             </div>
 
-            {/* PRESET GRID */}
+            {/* PRESET GRID  */}
             {pickerMode === 'grid' ? (
                 <div className="grid grid-cols-4 gap-2">
                     {COLORS.map(c => (
