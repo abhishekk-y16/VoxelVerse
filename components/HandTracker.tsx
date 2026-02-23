@@ -74,7 +74,7 @@ function sampleColorAt(ctx: CanvasRenderingContext2D, x: number, y: number, widt
 
     if (count === 0) return undefined;
 
-    // Add current sample to history
+    // Add current sample to history 
     colorHistory.push({ r: r / count, g: g / count, b: b / count });
     if (colorHistory.length > HISTORY_SIZE) colorHistory.shift();
 
