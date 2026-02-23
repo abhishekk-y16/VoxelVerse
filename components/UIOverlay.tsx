@@ -89,7 +89,7 @@ export const UIOverlay: React.FC<UIOverlayProps> = ({
       {/* 3. RIGHT TOOLBAR */}
       <div className="absolute top-1/2 right-6 -translate-y-1/2 z-40 flex flex-col gap-4 pointer-events-auto">
          
-         {/* MODE SELECTOR */}
+         {/* MODE SELECTOR  */}
          <div className="bg-black/80 backdrop-blur-xl border border-white/10 p-2 rounded-2xl flex flex-col gap-2 shadow-2xl">
             <div className="px-2 py-1 text-[10px] font-bold uppercase text-slate-500 tracking-widest text-center">Editor Modes</div>
             
