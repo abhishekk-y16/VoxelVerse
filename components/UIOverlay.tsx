@@ -139,7 +139,7 @@ export const UIOverlay: React.FC<UIOverlayProps> = ({
                 </div>
             </div>
 
-            {/* LIVE DETECTED COLOR INDICATOR */}
+            {/* LIVE DETECTED COLOR INDICATOR  */}
             <div className={`mb-3 flex items-center gap-3 p-2.5 rounded-xl border transition-all duration-300 relative overflow-hidden
                 ${isScanning 
                     ? 'bg-fuchsia-500/20 border-fuchsia-500/50 shadow-[0_0_20px_rgba(217,70,239,0.2)]' 
