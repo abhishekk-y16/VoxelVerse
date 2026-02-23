@@ -89,7 +89,7 @@ function sampleColorAt(ctx: CanvasRenderingContext2D, x: number, y: number, widt
     avgG /= colorHistory.length;
     avgB /= colorHistory.length;
 
-    // Reject near-white / near-black samples (likely noise or empty background)
+    // Reject near-white / near-black samples (likely noise or empty background) 
     if ((avgR > 245 && avgG > 245 && avgB > 245) || (avgR < 10 && avgG < 10 && avgB < 10)) {
       return undefined;
     }
