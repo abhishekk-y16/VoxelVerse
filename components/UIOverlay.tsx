@@ -50,7 +50,7 @@ export const UIOverlay: React.FC<UIOverlayProps> = ({
   return (
     <div className="pointer-events-none select-none text-white">
       
-      {/* 1. BRAND HEADER */}
+      {/* 1. BRAND HEADER  */}
       <div className="absolute top-6 left-8 z-40">
         <h1 className="text-4xl font-black tracking-tighter italic drop-shadow-xl">
             VOXEL<span className="text-cyan-400">VERSE</span>
