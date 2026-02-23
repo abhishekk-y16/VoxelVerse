@@ -247,7 +247,7 @@ export const HandTracker: React.FC<HandTrackerProps> = ({ onUpdate, handPosRef, 
                 ctx.drawImage(video, -canvas.width, 0, canvas.width, canvas.height);
                 ctx.restore();
                 
-                // Adjustable radius based on mode
+                // Adjustable radius based on mode 
                 const scanRadius = isGrabbing ? 30 : 8; 
                 
               sampledColor = sampleColorAt(ctx, hudScanX, hudScanY, canvas.width, canvas.height, scanRadius);
