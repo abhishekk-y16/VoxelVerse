@@ -64,7 +64,7 @@ export const detectGesture = (
     return { type: GestureType.VICTORY, confidence: 0.85 };
   }
 
-  // 4. POINT: Index extended, others curled (For Color Picking)
+  // 4. POINT: Index extended, others curled (For Color Picking) 
   if (isIndexExtended && !isMiddleExtended && isRingCurled && isPinkyCurled) {
     return { type: GestureType.POINT, confidence: 0.8 };
   }
