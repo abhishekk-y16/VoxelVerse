@@ -32,7 +32,7 @@ export const detectGesture = (
   const pinkyTip = landmarks[20];
   const wrist = landmarks[0];
 
-  // Distances from wrist (simple extension check)
+  // Distances from wrist (simple extension check) 
   const thumbExt = getDistance(wrist, thumbTip);
   const indexExt = getDistance(wrist, indexTip);
   const middleExt = getDistance(wrist, middleTip);
