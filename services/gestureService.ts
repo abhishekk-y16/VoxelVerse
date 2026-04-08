@@ -57,7 +57,7 @@ export const detectGesture = (
   // 3. VICTORY: Index and Middle extended, others curled 
   const isIndexExtended = indexExt > grabThreshold; 
   const isMiddleExtended = middleExt > grabThreshold;
-  const isRingCurled = ringExt < 0.2; // Keep looser check for curls in Victory
+  const isRingCurled = ringExt < 0.2; // Keep looser check for curls in Victory 
   const isPinkyCurled = pinkyExt < 0.2;
 
   if (isIndexExtended && isMiddleExtended && isRingCurled && isPinkyCurled) {
