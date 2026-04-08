@@ -54,7 +54,7 @@ export const detectGesture = (
       return { type: GestureType.PINCH, confidence: 0.95 };
   }
 
-  // 3. VICTORY: Index and Middle extended, others curled
+  // 3. VICTORY: Index and Middle extended, others curled 
   const isIndexExtended = indexExt > grabThreshold; 
   const isMiddleExtended = middleExt > grabThreshold;
   const isRingCurled = ringExt < 0.2; // Keep looser check for curls in Victory
