@@ -39,7 +39,7 @@ export const detectGesture = (
   const ringExt = getDistance(wrist, ringTip);
   const pinkyExt = getDistance(wrist, pinkyTip);
 
-  // 1. PINCH: Thumb tip close to Index tip
+  // 1. PINCH: Thumb tip close to Index tip 
   // IMPROVEMENT: Check that other fingers are somewhat open to avoid confusion with Grab/Fist
   const pinchDist = getDistance(thumbTip, indexTip);
   const isPinch = pinchDist < pinchThreshold;
