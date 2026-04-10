@@ -3,7 +3,7 @@ import { API_BASE_URL } from '../constants';
 import { VoxelData } from '../types';
 
 /**
- * Interface for the Spring Boot Backend.
+ * Interface for the Spring Boot Backend. 
  * Expected Controller:
  * 
  * @RestController
