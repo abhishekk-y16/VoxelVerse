@@ -61,7 +61,7 @@ export const UIOverlay: React.FC<UIOverlayProps> = ({
         </div>
       </div>
 
-      {/* 2. DYNAMIC ISLAND (Gesture Feedback) */}
+      {/* 2. DYNAMIC ISLAND  (Gesture Feedback) */}
       <div className="absolute top-6 left-1/2 -translate-x-1/2 z-40">
          <div className={`flex items-center gap-5 px-8 py-3 rounded-full backdrop-blur-2xl border-2 transition-all duration-200 ${getGestureColor(currentGesture)}`}>
             <Cpu size={24} strokeWidth={2} className={currentGesture !== GestureType.NONE ? 'animate-pulse' : 'opacity-50'}/>
