@@ -127,7 +127,7 @@ export const UIOverlay: React.FC<UIOverlayProps> = ({
             />
          </div>
 
-         {/* COLOR PALETTE & LIVE SCAN DISPLAY */}
+         {/* COLOR PALETTE & LIVE SCAN DISPLAY  */}
          <div className="bg-black/80 backdrop-blur-xl border border-white/10 p-3 rounded-2xl shadow-2xl">
             <div className="flex justify-between items-center mb-3">
                 <span className="text-[10px] font-bold uppercase text-slate-500 tracking-widest flex items-center gap-2">
