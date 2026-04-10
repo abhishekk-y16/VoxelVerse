@@ -20,7 +20,6 @@ export const COLORS = [
   '#cbd5e1', // Slate 300
   '#94a3b8', // Slate 400
   '#64748b', // Slate 500
-  '#0f172a', // Slate 900
 ];
 
 export const GRID_SIZE = 30; // Larger grid for drawing text
