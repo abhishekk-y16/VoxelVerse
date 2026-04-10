@@ -17,9 +17,7 @@ export const COLORS = [
   '#d946ef', // Fuchsia
   '#f43f5e', // Rose
   '#ffffff', // White
-  '#cbd5e1', // Slate 300
-  '#94a3b8', // Slate 400
-  '#64748b', // Slate 500
+
 ];
 
 export const GRID_SIZE = 30; // Larger grid for drawing text
