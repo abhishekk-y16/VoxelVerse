@@ -8,7 +8,7 @@ import { VoxelData } from '../types';
  * 
  * @RestController
  * @RequestMapping("/api/v1/voxels")
- * public class VoxelController { ... }
+ * public class VoxelController { ... } 
  */
 
 export const apiService = {
