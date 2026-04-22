@@ -156,7 +156,7 @@ export const HandTracker: React.FC<HandTrackerProps> = ({ onUpdate, handPosRef, 
   }, []);
 
   useEffect(() => {
-    let stream: MediaStream | null = null;
+    let stream: MediaStream | null = null; 
     if (!isActive) return;
 
     const startCamera = async () => {
