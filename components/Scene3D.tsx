@@ -5,7 +5,7 @@ import { OrbitControls, Environment, Effects } from '@react-three/drei';
 import * as THREE from 'three';
 import { VoxelMap, EditorMode, GestureType } from '../types';
 
-// Extend JSX.IntrinsicElements for React Three Fiber
+// Extend JSX.IntrinsicElements for React Three Fiber 
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
