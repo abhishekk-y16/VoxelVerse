@@ -32,7 +32,7 @@ function toScreenSpace(x: number, y: number, videoWidth: number, videoHeight: nu
     return { x: sx, y: sy };
 }
 
-// Helper to convert RGB to Hex 
+// Helper to convert RGB to Hex  
 const rgbToHex = (r: number, g: number, b: number) => {
     const toHex = (n: number) => {
         const val = Math.round(n);
