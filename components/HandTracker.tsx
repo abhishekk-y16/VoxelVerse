@@ -19,7 +19,7 @@ function toScreenSpace(x: number, y: number, videoWidth: number, videoHeight: nu
     const screenAspect = screenWidth / screenHeight;
     let sx = x, sy = y;
     if (screenAspect > videoAspect) {
-        const scale = screenWidth / videoWidth;
+        const scale = screenWidth / videoWidth; 
         const visualHeight = videoHeight * scale;
         const topOffset = (screenHeight - visualHeight) / 2;
         sy = ((y * visualHeight) + topOffset) / screenHeight;
