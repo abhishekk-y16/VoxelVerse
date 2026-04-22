@@ -41,7 +41,7 @@ const rgbToHex = (r: number, g: number, b: number) => {
     return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
 };
 
-// Rolling average buffer for color stability
+// Rolling average buffer for color stability 
 const colorHistory: { r: number, g: number, b: number }[] = [];
 const HISTORY_SIZE = 10; 
 
