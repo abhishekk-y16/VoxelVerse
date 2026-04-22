@@ -6,7 +6,7 @@ import { detectGesture } from '../services/gestureService';
 // @ts-ignore
 import { FilesetResolver, HandLandmarker } from '@mediapipe/tasks-vision';
 
-interface HandTrackerProps {
+interface HandTrackerProps { 
   onUpdate: (state: TrackingState) => void;
   handPosRef: React.MutableRefObject<{x: number, y: number}>;
   isColorPickingMode: boolean;
