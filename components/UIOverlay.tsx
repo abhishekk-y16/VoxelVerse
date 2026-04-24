@@ -10,7 +10,7 @@ import {
 
 interface UIOverlayProps {
   mode: EditorMode;
-  setMode: (mode: EditorMode) => void;
+  setMode: (mode: EditorMode) => void; 
   selectedColor: string;
   setColor: (color: string) => void;
   currentGesture: GestureType;
