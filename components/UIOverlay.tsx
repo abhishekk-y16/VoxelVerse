@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { EditorMode, GestureType, GestureSettings } from '../types';
-import { COLORS } from '../constants';
+import { COLORS } from '../constants'; 
 import { 
   BoxSelect, Trash2, Palette, Undo2, Redo2, Save, Cpu, 
   Maximize2, SlidersHorizontal, Grid3X3, Copy, Rotate3D, 
