@@ -6,7 +6,7 @@ import {
   BoxSelect, Trash2, Palette, Undo2, Redo2, Save, Cpu, 
   Maximize2, SlidersHorizontal, Grid3X3, Copy, Rotate3D, 
   Activity, Pipette, MousePointer2, Settings2, Info, ScanEye, X 
-} from 'lucide-react';
+} from 'lucide-react'; 
 
 interface UIOverlayProps {
   mode: EditorMode;
