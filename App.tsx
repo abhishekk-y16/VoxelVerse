@@ -170,7 +170,7 @@ const App: React.FC = () => {
          }
       }
 
-      // --- ACTION LOGIC (gate by confidence) ---
+      // --- ACTION  LOGIC (gate by confidence) ---
       const minConf = gestureSettings.minConfidence ?? GESTURE_CONFIDENCE_MIN;
 
       if (state.gesture === GestureType.PINCH && state.confidence >= minConf) {
