@@ -46,7 +46,7 @@ const App: React.FC = () => {
           }
       }
 
-      // 2. Fallback to API/Empty
+      // 2. Fallback to API/Empty 
       const initialVoxels = await apiService.getWorld();
       const map = new Map<string, VoxelData>();
       initialVoxels.forEach(v => map.set(v.id, v));
