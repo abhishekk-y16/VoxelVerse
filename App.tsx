@@ -25,7 +25,7 @@ const App: React.FC = () => {
   const gridPosRef = useRef<{ x: number, y: number, z: number }>({ x: 0, y: 0, z: 0 });
   const voxelsRef = useRef<VoxelMap>(new Map());
   
-  // Cooldown Ref for Action Limiting
+  // Cooldown  Ref for Action Limiting
   const lastActionTimeRef = useRef<number>(0); 
 
   // Initialize & Persistence
