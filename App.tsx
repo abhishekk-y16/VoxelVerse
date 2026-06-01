@@ -159,7 +159,7 @@ const App: React.FC = () => {
     if (state.isTracking) {
       const { x, y, z } = gridPosRef.current;
 
-      // --- INTELLIGENT COLOR SAMPLING ---
+      // --- INTELLIGENT  COLOR SAMPLING ---
       // Enhanced logic: Auto-detect color when grabbing an object in Build Mode
       // We filter out pure white/black as they usually indicate sampling errors or empty space
       if (state.sampledColor && state.sampledColor !== '#ffffff' && state.sampledColor !== '#000000') {
