@@ -1,4 +1,4 @@
-
+ 
 import { HandLandmark, GestureType, GestureSettings } from '../types';
 import { DEFAULT_GESTURE_SETTINGS } from '../constants';
 
