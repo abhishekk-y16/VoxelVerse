@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { TrackingState, GestureType, HandLandmark, GestureSettings } from '../types'; 
 import { Camera, CameraOff, Loader2, ScanFace } from 'lucide-react'; 
 import { detectGesture } from '../services/gestureService';
-// @ts-ignore
+// @ts-ignore 
 import { FilesetResolver, HandLandmarker } from '@mediapipe/tasks-vision';
 
 interface HandTrackerProps { 
