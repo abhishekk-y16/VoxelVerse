@@ -1,4 +1,4 @@
- 
+  
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Scene3D } from './components/Scene3D';
 import { UIOverlay } from './components/UIOverlay';
